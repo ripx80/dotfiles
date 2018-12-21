@@ -1,0 +1,9 @@
+[user]
+	email = ripx80@protonmail.com
+	name = ripx80
+[push]
+	default = matching
+
+[http]
+	sslCAinfo = /etc/ssl/certs/ca-certificates.crt
+

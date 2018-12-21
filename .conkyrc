@@ -1,0 +1,121 @@
+conky.config = {
+	background = false,
+	use_xft = true,
+	xftalpha = 0.6,
+	own_window = true,
+	own_window_type = 'desktop',
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+--own_window_argb_value 160
+
+	double_buffer = true,
+	update_interval = 1,
+
+	maximum_width = 200,
+--alignment middle_middle
+	alignment = 'top_right',
+	gap_x = 10,
+	gap_y = 10,
+
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	diskio_avg_samples = 2,
+	override_utf8_locale = true,
+	if_up_strictness = 'address',
+
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	default_color = 'lightgray',
+--default_shade_color black
+--default_outline_color green
+	short_units = true,
+	use_spacer = 'none',
+	font = 'DejaVu Sans Mono:size=12',
+
+	template0 = [[
+${font Open Sans:Bold:size=10}${color dodgerblue3}\1 ${hr 2}$color${font}${voffset 1}]],
+	template1 = [[
+\1 ${alignr\ 80}${fs_bar\ \1}]],
+	template2 = [[
+${\1 name \2}${alignr}${\1 \3 \2} %]],
+	template3 = [[
+${if_up \1}${template0 \2}\nDown $alignr ${downspeed \1}/s\n$alignr${downspeedgraph \1 32,120 2}\nUp $alignr ${upspeed \1}/s\n$alignr ${upspeedgraph \1 32,120 2}\ntotal down$alignr${totaldown \1}\ntotal up $alignr${totalup \1}$endif]],
+	template4 = [[
+${if_up \1}Address ${alignr}${addr \1}${endif}]],
+
+
+--${execi 30 sudo hddtemp /dev/sda | grep '/dev/sda:' | cut -c28-29}°C
+--${execpi 300 python ~/.scripts/gmail.py}
+
+-- -- Lua Load -- #
+--lua_load ~/conky/rings.lua
+--lua_draw_hook_post
+
+};
+
+conky.text = [[
+$color${font}${font Open Sans:size=44}$alignr${time %H:%M}$font$color${font Open Sans:size=15}
+$alignr${time %a}, ${time %d %b %Y}$font$color
+
+# SYS
+${template0 SYSTEM}
+Kernel $alignr $kernel
+Host:$alignr$nodename
+Uptime $alignr $uptime
+Running: $alignr ${running_processes}
+#Temprature $alignr ${acpitemp}°C
+
+# CPU
+${template0 CPU}
+$color${font}Intel i5 $cpu% ${freq}MHz
+Core1 ${cpu cpu1}% ${alignr}${cpubar 8,80}
+Core2 ${cpu cpu2}% ${alignr}${cpubar 8,80}
+Core3 ${cpu cpu3}% ${alignr}${cpubar 8,80}
+Core4 ${cpu cpu4}% ${alignr}${cpubar 8,80}
+
+# RAM
+${template0 RAM}
+In use $alignr $mem
+Used$alignr$memeasyfree
+Buffers $alignr $buffers
+Cache $alignr $cached
+Swap $alignr $swap
+
+# NETWORK
+${template3 br0 BR0}
+${template3 br1 BR1}
+
+#CONNECTIONS
+${template0 CONNECTIONS}
+${template4 br0}
+${template4 br1}
+#${if_up br0}
+${color #ddaa00}Inbound: $alignr ${tcp_portmon 1 32767 count}$color
+${color #ddaa00}Outbound: $alignr ${tcp_portmon 32768 61000 count}$color
+${tcp_portmon 1 61000 rip 0} ${alignr} ${tcp_portmon 1 61000 rservice 0}
+${tcp_portmon 1 61000 rip 1} ${alignr} ${tcp_portmon 1 61000 rservice 1}
+${tcp_portmon 1 61000 rip 2} ${alignr} ${tcp_portmon 2 61000 rservice 2}
+${tcp_portmon 1 61000 rip 3} ${alignr} ${tcp_portmon 3 61000 rservice 3}
+${tcp_portmon 1 61000 rip 4} ${alignr} ${tcp_portmon 4 61000 rservice 4}
+
+#USER
+${template0 USER}
+${execi 10 w | tail -n+3 | awk '{ print $1" "$2" "$3; }' }
+
+# HDD
+${template0 HDD}
+#Spin-Up $alignr ${exec smartctl -A /dev/sda | head -n+10 | tail -1 | awk '{ print $10; }'}
+${template1 /}
+${template1 /var}
+${template1 /usr}
+${template1 /home}
+${template1 /tmp}
+
+#$color${font Open Sans:bold:size=8}/dev/sda $font$alignr ${hddtemp /dev/sda}°C
+${diskiograph sda}
+]];
