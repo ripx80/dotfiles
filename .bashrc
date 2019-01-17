@@ -8,5 +8,5 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-export GOPATH=~/gopath 
+export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
