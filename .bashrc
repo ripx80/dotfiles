@@ -45,5 +45,5 @@ extract () {
 
 # Path
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:/opt/VSCode-linux-x64/bin/
 export EDITOR=code
