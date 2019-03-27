@@ -47,3 +47,4 @@ extract () {
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin:/opt/VSCode-linux-x64/bin/
 export EDITOR=code
+pulseaudio --start
