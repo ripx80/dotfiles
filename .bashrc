@@ -45,6 +45,9 @@ extract () {
 
 # Path
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin:/opt/VSCode-linux-x64/bin/
+export PATH=$PATH:$GOPATH/bin:/home/rip/code/bin/
+
 export EDITOR=code
-pulseaudio --start
+# Alias
+alias depv='dep status -dot | dot -T png | display'
+#alias kube-gt="kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin | awk '{print $1}')"
