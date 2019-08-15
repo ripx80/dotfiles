@@ -45,12 +45,20 @@ extract () {
 
 # Path
 export GOPATH=~/go
+<<<<<<< HEAD
 export PATH=$PATH:$GOPATH/bin:/home/rip/code/bin/:/home/rip/.local/bin
+=======
+export PATH=$PATH:$GOPATH/bin:/home/rip/code/bin/
+>>>>>>> 9b24740a38ab04f982a31e4819b9ad9c8fb31fa3
 
 export EDITOR=code
 # Alias
 alias depv='dep status -dot | dot -T png | display'
+<<<<<<< HEAD
 alias gc='git clone'
 alias gp='git push'
 
 #alias kube-gt="kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin | awk '{print $1}')"
+=======
+#alias kube-gt="kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin | awk '{print $1}')"
+>>>>>>> 9b24740a38ab04f982a31e4819b9ad9c8fb31fa3

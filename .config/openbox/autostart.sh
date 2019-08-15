@@ -6,5 +6,6 @@ if [ "$DISPLAY" == ":0.0" ]
 	xcompmgr -d:0.0 -F &
 	hsetroot -fill ~/bg.jpg &
 	(conky) &
+	pulseaudio --start
 fi
 
