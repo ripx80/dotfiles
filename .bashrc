@@ -53,9 +53,4 @@ alias gc='git clone'
 alias gp='git push'
 
 alias kube-gt="kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin | awk '{print $1}')"
-=======
-alias gc='git clone'
-alias gp='git push'
-
-#alias kube-gt="kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin | awk '{print $1}')"
 
