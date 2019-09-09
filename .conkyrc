@@ -48,10 +48,6 @@ ${if_up \1}${template0 \2}\nDown $alignr ${downspeed \1}/s\n$alignr${downspeedgr
 	template4 = [[
 ${if_up \1}Address ${alignr}${addr \1}${endif}]],
 
-
---${execi 30 sudo hddtemp /dev/sda | grep '/dev/sda:' | cut -c28-29}°C
---${execpi 300 python ~/.scripts/gmail.py}
-
 -- -- Lua Load -- #
 --lua_load ~/conky/rings.lua
 --lua_draw_hook_post
@@ -67,16 +63,16 @@ ${template0 SYSTEM}
 Kernel $alignr $kernel
 Host:$alignr$nodename
 Uptime $alignr $uptime
-Running: $alignr ${running_processes}
-#Temprature $alignr ${acpitemp}°C
+#Temprature $alignr ${platform coretemp.0 temp 1}°C
 
 # CPU
 ${template0 CPU}
-$color${font}Intel i5 $cpu% ${freq}MHz
-Core1 ${cpu cpu1}% ${alignr}${cpubar 8,80}
-Core2 ${cpu cpu2}% ${alignr}${cpubar 8,80}
-Core3 ${cpu cpu3}% ${alignr}${cpubar 8,80}
-Core4 ${cpu cpu4}% ${alignr}${cpubar 8,80}
+$color${font}Ryzen 7 ${cpu cpu1}% ${alignr}${cpubar 8,80}
+Freq ${alignr}${freq}MHz
+#Core1 ${cpu cpu1}% ${alignr}${cpubar 8,80}
+#Core2 ${cpu cpu2}% ${alignr}${cpubar 8,80}
+#Core3 ${cpu cpu3}% ${alignr}${cpubar 8,80}
+#Core4 ${cpu cpu4}% ${alignr}${cpubar 8,80}
 
 # RAM
 ${template0 RAM}
@@ -87,14 +83,12 @@ Cache $alignr $cached
 Swap $alignr $swap
 
 # NETWORK
-${template3 br0 BR0}
-${template3 br1 BR1}
+${template3 wg0 wg}
 
 #CONNECTIONS
 ${template0 CONNECTIONS}
-${template4 br0}
-${template4 br1}
-#${if_up br0}
+${template4 wg0}
+
 ${color #ddaa00}Inbound: $alignr ${tcp_portmon 1 32767 count}$color
 ${color #ddaa00}Outbound: $alignr ${tcp_portmon 32768 61000 count}$color
 ${tcp_portmon 1 61000 rip 0} ${alignr} ${tcp_portmon 1 61000 rservice 0}
@@ -109,13 +103,9 @@ ${execi 10 w | tail -n+3 | awk '{ print $1" "$2" "$3; }' }
 
 # HDD
 ${template0 HDD}
-#Spin-Up $alignr ${exec smartctl -A /dev/sda | head -n+10 | tail -1 | awk '{ print $10; }'}
 ${template1 /}
 ${template1 /var}
 ${template1 /usr}
 ${template1 /home}
 ${template1 /tmp}
-
-#$color${font Open Sans:bold:size=8}/dev/sda $font$alignr ${hddtemp /dev/sda}°C
-${diskiograph sda}
 ]];

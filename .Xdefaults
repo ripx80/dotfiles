@@ -6,7 +6,20 @@ URxvt.fadeColor:		black
 URxvt.tintColor:		white
 # URxvt.shading:		70
 URxvt.shading:          40
+
 URxvt.font:			    xft:Bitstream Vera Sans Mono:pixelsize=13
+#URxvt.font: xft:Iosevka Term:style=medium:pixelsize=12
+#URxvt.boldFont: xft:Iosevka Term:style=bold:size=13
+#URxvt.italicFont: xft:Iosevka Term:style=italic:size=13
+#URxvt.boldItalicFont: xft:Iosevka Term:style=medium:size=13
+#URxvt.letterSpace: -4
+
+URxvt.clipboard.autocopy: true
 URxvt.scrollBar:		false
+
 URxvt.foreground:		green
 URxvt.background:		black
+
+! green
+URxvt*color2:  #18B218
+URxvt*color10: #54FF54
