@@ -218,6 +218,22 @@
                 <wrap>no</wrap>
             </action>
         </keybind>
+	<keybind key="W-Left">
+	    <action name="UnmaximizeFull"/>
+	    <action name="MaximizeVert"/>
+	    <action name="MoveResizeTo">
+	    <width>50%</width>
+	    </action>
+	    <action name="MoveToEdge"><direction>west</direction></action>
+	</keybind>
+	<keybind key="W-Right">
+	    <action name="UnmaximizeFull"/>
+	    <action name="MaximizeVert"/>
+	    <action name="MoveResizeTo">
+	        <width>50%</width>
+		</action>
+		<action name="MoveToEdge"><direction>east</direction></action>
+	</keybind>
         <keybind key="W-F1">
             <action name="Desktop">
                 <desktop>1</desktop>
@@ -248,7 +264,10 @@
         <keybind key="A-F3">
             <action name="Iconify"/>
         </keybind>
-        <keybind key="A-Escape">
+            <keybind key="A-F2">
+    	    <action name="ToggleMaximize"/>
+        </keybind>
+	<keybind key="A-Escape">
             <action name="Lower"/>
             <action name="FocusToBottom"/>
             <action name="Unfocus"/>
