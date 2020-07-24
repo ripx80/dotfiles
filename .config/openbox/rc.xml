@@ -298,7 +298,7 @@
         </keybind>
         <keybind key="W-t">
             <action name="Execute">
-                <command>urxvt</command>
+                <command>alacritty</command>
             </action>
         </keybind>
         <keybind key="W-f">
@@ -724,7 +724,7 @@
         <application name="xterm">
             <decor>no</decor>
         </application>
-        <application name="urxvt">
+        <application name="alacritty">
             <decor>no</decor>
         </application>
         <!--
