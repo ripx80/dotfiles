@@ -303,7 +303,7 @@
         </keybind>
         <keybind key="W-f">
             <action name="Execute">
-                <command>firefox</command>
+                <command>google-chrome-stable</command>
             </action>
         </keybind>
         <keybind key="W-c">
